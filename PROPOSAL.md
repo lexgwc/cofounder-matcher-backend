@@ -32,7 +32,7 @@ This is an application to enable students to find and connect with other people 
 
 ## ERD
 
-![ERD](./images/ERD_cofounder_matcher.png)
+![ERD](./images/ERD_Cofounder_Matcher.png)
 
 [View ERD on Eraser](https://app.eraser.io/workspace/mBdlNoMANSN8HNMNumZn)
 
