@@ -72,7 +72,42 @@ This is an application to enable students to find and connect with other people 
 
 ## Component Hierarchy Diagram
 
+#### Diagram
+
 ![CHD](./images/Component_Hierarchy_Diagram.png)
+
+#### Frontend Routes
+
+* Home Page
+  * Logo
+  * Mission Statement
+  * Create Account Button
+  * School User Count Boxes
+* Create Account Page
+  * Creation Form
+  * Save and Continue Buttom
+* Create Profile Page
+  * Profile Photo Container
+  * Creation Form
+  * Submit Button
+* Login Page
+  * Login Form
+  * Submit Button
+* Profile Search Page
+  * Filters Pop Out
+  * Filtered Properties List
+  * Profile Container
+  * Skip Button
+  * Invite Buttom
+  * Favorite Button
+* Favorites Page
+  * Abbreviated Profiles Containers
+* Conversations Page
+  * Chat Preview Containers
+* Active Conversation Page
+  * Typing Window
+  * Message Containers
+
 
 ## Team Expectations
 
@@ -84,15 +119,15 @@ This is an application to enable students to find and connect with other people 
 
 ## Timeline
 
-| Day       |   | Task                                                            | Status    | Notes |
-|-----------|---|-----------------------------------------------------------------|-----------|-------|
-| Friday    |   | Create proposal, make ERD and front-end Wireframes              | Completed |       |
-| Monday    |   | Create file structure, connect to database, build all Models    | To Do     |       |
-| Tuesday   |   | Build all Routes and Controllers                                | To Do     |       |
-| Wednesday |   | Finalize Routes and Controllers, build basic Auth functionality | To Do     |       |
-| Thursdary |   | Set up basic front end structure, write all fetch requests      | To Do     |       |
-| Friday    |   | Build persistent Auth functionality, add front-end styling      | To Do     |       |
-| Saturday  |   | Work on stretch goals                                           | To Do     |       |
-| Sunday    |   | Finalize work on stretch goals, prepare presentation            | To Do     |       |
-| Monday    |   | Present work                                                    | To Do     |       |
+| Day       |   | Task                                                                           | Status | Notes |
+|-----------|---|--------------------------------------------------------------------------------|--------|-------|
+| Friday    |   | Create proposal, make ERD, make CHD, front-end Wireframes                      | To Do  |       |
+| Monday    |   | Create backend file structure, connect to database, build all Models and Auth  | To Do  |       |
+| Tuesday   |   | Write all controllers, helper functions and services                           | To Do  |       |
+| Wednesday |   | Create front end file structure, create pages and components, deploy app       | To Do  |       |
+| Thursdary |   | Break into partners/individual work, create chat functionality                 | To Do  |       |
+| Friday    |   | Wrap up work on MVP, debug and polish                                          | To Do  |       |
+| Saturday  |   | Work on stretch goals                                                          | To Do  |       |
+| Sunday    |   | Finalize work on stretch goals, prepare presentation                           | To Do  |       |
+| Monday    |   | Present work                                                                   | To Do  |       |
 
