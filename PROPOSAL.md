@@ -78,33 +78,33 @@ This is an application to enable students to find and connect with other people 
 
 #### Frontend Routes
 
-* Home Page
+* Home Page - Route to='/home' element={- Home />} />
   * Logo
   * Mission Statement
   * Create Account Button
   * School User Count Boxes
-* Create Account Page
+* Create Account Page - Route path='/create-account' element={- CreateAccount />} />
   * Creation Form
   * Save and Continue Buttom
-* Create Profile Page
+* Create Profile Page - Route path='/profile' element={- Profile />} />
   * Profile Photo Container
   * Creation Form
   * Submit Button
-* Login Page
+* Login Page - Route path='/login' element={- Login />} />
   * Login Form
   * Submit Button
-* Profile Search Page
+* Profile Search Page - Route path='/profile-search' element={- ProfileSearch />} />
   * Filters Pop Out
   * Filtered Properties List
   * Profile Container
   * Skip Button
   * Invite Buttom
   * Favorite Button
-* Favorites Page
+* Favorites Page - Route path='/favorites' element={- Favorites />} />
   * Abbreviated Profiles Containers
-* Conversations Page
+* Conversations Page - Route path='/conversations' element={- Conversations />} />
   * Chat Preview Containers
-* Active Conversation Page
+* Active Conversation Page - Route path='/active-conversation' element={- ActiveConversation />} />
   * Typing Window
   * Message Containers
 
