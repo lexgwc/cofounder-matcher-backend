@@ -23,7 +23,7 @@ export const getAllFavorite = async (req, res) => {
   }
 }
 
-// Get one school by ID
+// Get one favorite by ID
 
 export const getFavoritelById = async (req, res) => {
   try {
