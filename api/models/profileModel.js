@@ -52,8 +52,48 @@ const profileSchema = new Schema({
     required: true
   },
   industryInterests: {
-    type: [String],
-    required: true
+    type: [{
+      type: String,
+      enum: [
+        'Agriculture',
+        'Art & Design',
+        'Artificial Intelligence',
+        'Augmented Reality',
+        'Biotechnology',
+        'Blockchain',
+        'Consumer Retail',
+        'Cryptocurrency',
+        'Defense & Space',
+        'Education',
+        'Energy',
+        'Entertainment',
+        'Environmental',
+        'Fashion',
+        'Finance',
+        'Food & Beverage',
+        'Gaming',
+        'Government',
+        'Healthcare',
+        'Hospitality',
+        'Legal',
+        'Logistics',
+        'Machine Learning',
+        'Manufacturing',
+        'Media',
+        'Non-Profit',
+        'Pharmaceuticals',
+        'Publishing',
+        'Real Estate',
+        'Sports',
+        'Tech',
+        'Telecommunications',
+        'Tourism',
+        'Transportation',
+        'Virtual Reality',
+        'Other'
+      ]
+    }],
+    required: false 
   },
   interestedInBeingACofounder: {
     type: Boolean,
@@ -63,7 +103,21 @@ const profileSchema = new Schema({
     type: String
   },
   programType: {
-    type: String
+    type: String,
+    enum: [
+      'Business',
+      'Law',
+      'Medicine/Health Sciences',
+      'Engineering',
+      'Education',
+      'Social Sciences',
+      'Computer Science',
+      'Arts and Design',
+      'Environmental Studies',
+      'Public Administration',
+      'Other'
+    ],
+    required: true 
   },
   birthDate: {
     type: Date
@@ -81,13 +135,28 @@ const profileSchema = new Schema({
     type: String
   },
   hasIdea: {
-    type: Boolean
+    type: String,
+    enum: [
+      "Committed to an idea",
+      "Have ideas but not committed",
+      "Don't have an idea yet"
+    ],
+    required: true
   },
   potentialIdeas: {
     type: [String]
   },
   areasOfResponsibility: {
-    type: [String]
+    type: [{ type: String, enum: [
+      'Business Strategy',
+      'Product Development',
+      'Marketing and Sales',
+      'Technology and Engineering',
+      'Operations',
+      'Finance and Fundraising',
+      'Legal and Compliance'
+    ]}],
+    required: false
   },
   cofounderDesiredQualities: {
     type: [String]

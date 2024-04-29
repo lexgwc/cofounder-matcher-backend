@@ -8,13 +8,12 @@ export const getAllProfiles = async (req, res) => {
 
     if (!profiles
     ) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `No profiles found`
       })
     }
 
-    res.json(profiles
-    )
+    res.json(profiles)
 
   } catch (error) {
     res.status(500).json({
@@ -32,7 +31,7 @@ export const getProfileById = async (req, res) => {
     const profile = await Profile.findById(id)
 
     if (!profile) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `Profile not found`
       })
     }
@@ -53,7 +52,7 @@ export const createProfile = async (req, res) => {
     const profileData = req.body
 
     if (!profileData.length === 0) {
-      res.status(401).json({
+      return res.status(401).json({
         error: `No profile data found`
       })
     }
@@ -61,7 +60,7 @@ export const createProfile = async (req, res) => {
     const profileCreated = await Profile.create(profileData)
 
     if (!profileCreated) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `Profile was not able to be created`
       })
     }
@@ -87,7 +86,7 @@ export const updateProfileByID = async (req, res) => {
     const profileToUpdate = await Profile.findById(id)
 
     if (!profileToUpdate) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `Could not find a profile with ID ${id}`
       })
     }
@@ -109,7 +108,7 @@ export const updateProfileByID = async (req, res) => {
     })
 
   } catch (error) {
-    res.status(500).json({
+    return res.status(500).json({
       error: `Internal server error: ${error}`
     })
   }
@@ -124,7 +123,7 @@ export const deleteProfileByID = async (req, res) => {
     const profileToDelete = await Profile.findByIdAndDelete(id)
 
     if (!profileToDelete) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `Profile not found and was not deleted`
       })
     }
