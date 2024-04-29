@@ -1,4 +1,4 @@
-import Conversation from "../models/conversationModel"
+import Conversation from "../models/conversationModel.js"
 
 // Function to create a new conversation when a message is sent for the first time between two users
 

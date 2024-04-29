@@ -8,6 +8,7 @@ const userSchema = new Schema({
     required: true
   },
   username: {
+    type: String,
     required: [true, 'Username is required'],
     unique: true,
     minlength: [5, 'Username must include a minimum of 6 characters'],
@@ -20,6 +21,6 @@ const userSchema = new Schema({
   }
 },{timestamps: true})
 
-const User = mongoose.Model('User', userSchema)
+const User = mongoose.model('User', userSchema)
 
 export default User

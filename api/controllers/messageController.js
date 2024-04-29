@@ -1,5 +1,5 @@
-import Message from "../models/messageModel"
-import { createConversationFromMessage, updateConversationFromMessage } from "../services/conversationServices";
+import Message from "../models/messageModel.js"
+import { createConversationFromMessage, updateConversationFromMessage } from "../services/conversationServices.js";
 
 // Get all messages
 export const getAllMessages = async (req, res) => {
