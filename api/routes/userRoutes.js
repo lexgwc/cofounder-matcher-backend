@@ -4,7 +4,7 @@ import express from "express";
 
 const router = express.Router()
 
-import { getAllUsers, getUserById, createUser, updateUserById, deleteUserById } from "../controllers/userController";
+import { getAllUsers, getUserById, createUser, updateUserById, deleteUserById } from "../controllers/userController.js";
 
 // Routes
 

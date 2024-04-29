@@ -6,43 +6,39 @@ import express from 'express';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import authRouter from './routes/auth.js';
-import userRouter from './routes/user.js';
-import favoriteRouter from './routes/favorite.js';
-import messageRouter from './routes/message.js';
-import schoolRouter from './routes/school.js';
-import conversationRouter from './routes/conversation.js';
-import profileRouter from './routes/profile.js';
-
+import authRouter from './api/routes/authRoutes.js';
+import userRouter from './api/routes/userRoutes.js';
+import favoriteRouter from './api/routes/favoriteRoutes.js';
+import messageRouter from './api/routes/messageRoutes.js';
+import schoolRouter from './api/routes/schoolRoutes.js';
+import conversationRouter from './api/routes/conversationRoutes.js';
+import profileRouter from './api/routes/profileRoutes.js';
 
 // Import database connection
 import './config/db.js'
 
+//Initialize express instance
+const app = express()
+
 // Middleware
-app.use(cors());
+app.use(cors())
 app.use(morgan('combined'))
 app.use(express.json())
 
-
-const app = express();
-
 // Routes
 app.use('/auth', authRouter)
-app.use('/user', userRouter)
-app.use('/favorite', favoriteRouter)
-app.use('/message', messageRouter)
-app.use('/school', schoolRouter)
-app.use('/conversation', conversationRouter)
-app.use('/profile', profileRouter)
+app.use('/users', userRouter)
+app.use('/favorites', favoriteRouter)
+app.use('/messages', messageRouter)
+app.use('/schools', schoolRouter)
+app.use('/conversations', conversationRouter)
+app.use('/profiles', profileRouter)
 
-app.get("/", (req, res)=>{
-  console.log("hello world")
-})
+// Set port for use in server
+const PORT = process.env.PORT || 3001
 
-
-const PORT = process.env.PORT || 3000
-
-app.listen(PORT, ()=>{
+// Start server
+app.listen(PORT, () => {
   console.log("Server running on port ", PORT)
 })
 

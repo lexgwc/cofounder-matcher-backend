@@ -1,4 +1,4 @@
-import Favorite from "../models/favoriteModel"
+import Favorite from "../models/favoriteModel.js"
 
 // Get all favorites
 
