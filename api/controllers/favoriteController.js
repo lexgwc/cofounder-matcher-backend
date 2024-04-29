@@ -8,7 +8,7 @@ export const getAllFavorite = async (req, res) => {
 
     if (!favorite
     ) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `No favorite found`
       })
     }
@@ -32,7 +32,7 @@ export const getFavoritelById = async (req, res) => {
     const favorite = await Favorite.findById(id)
 
     if (!favorite) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `favorite not found`
       })
     }
@@ -55,7 +55,7 @@ export const getFavoritelByUserId = async (req, res) => {
     const favorites = await Favorite.find({ userId: userId})
 
     if (!favorites) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Favorite snot found`
       })
     }
@@ -84,7 +84,7 @@ export const createFavorite = async (req, res) => {
     const favoriteCreated = await Favorite.create(favoriteData)
 
     if (!favoriteCreated) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Favorite was not able to be created`
       })
     }
@@ -110,7 +110,7 @@ export const updateFavoriteByID = async (req, res) => {
     const favoriteToUpdate = await Favorite.findById(id)
 
     if (!favoriteToUpdate) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Could not find a School with ID ${id}`
       })
     }
@@ -141,7 +141,7 @@ export const deleteFavoriteByID = async (req, res) => {
     const favoriteToDelete = await Favorite.findByIdAndDelete(id)
 
     if (!favoriteToDelete) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Favorite not found and was not deleted`
       })
     }

@@ -5,7 +5,7 @@ export const getAllMessage = async (req, res) => {
   try {
     const messages = await Message.find({});
     if (!messages.length) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: "No messages found"
       });
     }
@@ -24,7 +24,7 @@ export const getMessageById = async (req, res) => {
     const { id } = req.params;
     const message = await Message.findById(id);
     if (!message) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: "Message not found"
       });
     }
@@ -44,7 +44,7 @@ export const createMessage = async (req, res) => {
     const messageData = req.body;
 
     if (Object.keys(messageData).length === 0) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: "No message data found"
       });
     }
@@ -68,7 +68,7 @@ export const updateMessageByID = async (req, res) => {
     const messageData = req.body;
     const messageToUpdate = await Message.findById(id);
     if (!messageToUpdate) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Could not find a message with ID ${id}`
       });
     }
@@ -95,7 +95,7 @@ export const messageDeleteByID = async (req, res) => {
     const { id } = req.params;
     const messageToDelete = await Message.findByIdAndDelete(id);
     if (!messageToDelete) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: "Message not found and was not deleted"
       });
     }
@@ -103,7 +103,7 @@ export const messageDeleteByID = async (req, res) => {
     res.json({
       message: "Message was deleted successfully"
     })
-    
+
   } catch (error) {
     res.status(500).json({
       error: `Internal server error: ${error}`

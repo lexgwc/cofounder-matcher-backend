@@ -7,7 +7,7 @@ export const getAllConversations = async (req, res) => {
     const conversations = await Conversation.find({})
 
     if (!conversations) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `No conversations found`
       })
     }
@@ -30,7 +30,7 @@ export const getConversationById = async (req, res) => {
     const conversation = await Conversation.findById(id)
 
     if (!conversation) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Conversation not found`
       })
     }
@@ -59,7 +59,7 @@ export const createConversation = async (req, res) => {
     const conversationCreated = await Conversation.create(conversationData)
 
     if (!conversationCreated) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Conversation was not able to be created`
       })
     }
@@ -85,7 +85,7 @@ export const updateConversationByID = async (req, res) => {
     const conversationToUpdate = await Conversation.findById(id)
 
     if (!conversationToUpdate) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Could not find a Conversation with ID ${id}`
       })
     }
@@ -116,7 +116,7 @@ export const deleteConversationByID = async (req, res) => {
     const conversationToDelete = await Conversation.findByIdAndDelete(id)
 
     if (!conversationToDelete) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Conversation not found and was not deleted`
       })
     }

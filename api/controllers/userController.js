@@ -7,7 +7,7 @@ export const getAllUsers = async (req, res) => {
     const users = await User.find({})
 
     if (!users) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `No users found`
       })
     }
@@ -30,7 +30,7 @@ export const getUserById = async (req, res) => {
     const user = await User.findById(id)
 
     if (!user) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `User not found`
       })
     }
@@ -59,7 +59,7 @@ export const createUser = async (req, res) => {
     const userCreated = await User.create(userData)
 
     if (!userCreated) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `User was not able to be created`
       })
     }
@@ -85,7 +85,7 @@ export const updateUserByID = async (req, res) => {
     const userToUpdate = await User.findById(id)
 
     if (!userToUpdate) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `Could not find a user with ID ${id}`
       })
     }
@@ -116,7 +116,7 @@ export const deleteUserByID = async (req, res) => {
     const userToDelete = await User.findByIdAndDelete(id)
 
     if (!userToDelete) {
-      return res.status(400).json({
+      return res.status(404).json({
         error: `User not found and was not deleted`
       })
     }
