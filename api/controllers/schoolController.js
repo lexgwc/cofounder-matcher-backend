@@ -78,7 +78,7 @@ export const createSchool = async (req, res) => {
 
 // Update a School by ID
 
-export const updateSchoolByID = async (req, res) => {
+export const updateSchoolById = async (req, res) => {
   try {
     const { id } = req.params
     const schoolData = req.body
@@ -110,7 +110,7 @@ export const updateSchoolByID = async (req, res) => {
 
 // Delete School by ID
 
-export const deleteSchoolByID = async (req, res) => {
+export const deleteSchoolById = async (req, res) => {
   try {
     const { id } = req.params
 

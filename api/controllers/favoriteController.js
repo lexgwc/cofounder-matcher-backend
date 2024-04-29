@@ -2,7 +2,7 @@ import Favorite from "../models/favoriteModel"
 
 // Get all favorites
 
-export const getAllFavorite = async (req, res) => {
+export const getAllFavorites = async (req, res) => {
   try {
     const favorite = await Favorite.find({})
 
@@ -25,7 +25,7 @@ export const getAllFavorite = async (req, res) => {
 
 // Get one favorite by ID
 
-export const getFavoritelById = async (req, res) => {
+export const getFavoriteById = async (req, res) => {
   try {
     const { id } = req.params
 
@@ -48,7 +48,7 @@ export const getFavoritelById = async (req, res) => {
 
 // Get all favorites by userId
 
-export const getFavoritelByUserId = async (req, res) => {
+export const getFavoriteByUserId = async (req, res) => {
   try {
     const { userId } = req.user
 
@@ -102,7 +102,7 @@ export const createFavorite = async (req, res) => {
 
 // Update a Favorite by ID
 
-export const updateFavoriteByID = async (req, res) => {
+export const updateFavoriteById = async (req, res) => {
   try {
     const { id } = req.params
     const favoriteData = req.body
@@ -134,7 +134,7 @@ export const updateFavoriteByID = async (req, res) => {
 
 // Delete favorite by ID
 
-export const deleteFavoriteByID = async (req, res) => {
+export const deleteFavoriteById = async (req, res) => {
   try {
     const { id } = req.params
 

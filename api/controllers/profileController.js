@@ -78,7 +78,7 @@ export const createProfile = async (req, res) => {
 
 // Update a Profile by ID
 
-export const updateProfileByID = async (req, res) => {
+export const updateProfileById = async (req, res) => {
   try {
     const { id } = req.params
     const profileData = req.body
@@ -116,7 +116,7 @@ export const updateProfileByID = async (req, res) => {
 
 // Delete Profile by ID
 
-export const deleteProfileByID = async (req, res) => {
+export const deleteProfileById = async (req, res) => {
   try {
     const { id } = req.params
 

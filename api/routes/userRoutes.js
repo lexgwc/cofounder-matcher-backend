@@ -4,7 +4,7 @@ import express from "express";
 
 const router = express.Router()
 
-import { getAllUsers, getUserById, createUser, updateUserByID, deleteUserByID } from "../controllers/userController";
+import { getAllUsers, getUserById, createUser, updateUserById, deleteUserById } from "../controllers/userController";
 
 // Routes
 
@@ -22,10 +22,10 @@ router.post('/', createUser)
 
 // Update user
 
-router.put('/:id', updateUserByID)
+router.put('/:id', updateUserById)
 
 // Delete user
 
-router.delete('/:id', deleteUserByID)
+router.delete('/:id', deleteUserById)
 
 export default router

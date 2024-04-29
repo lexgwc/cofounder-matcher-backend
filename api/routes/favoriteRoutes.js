@@ -1,7 +1,7 @@
 // Import express and router
 
 import express from "express";
-import { getAllFavorites, getFavoriteById, createFavorite, updateFavoriteById, deleteFavoriteById } from "../controllers/favoriteController.js"
+import { getAllFavorites, getFavoriteById, getFavoriteByUserId, createFavorite, updateFavoriteById, deleteFavoriteById } from "../controllers/favoriteController.js"
 
 const router = express.Router()
 
@@ -14,6 +14,10 @@ router.get('/', getAllFavorites)
 // Get one favorite by id
 
 router.get('/:id', getFavoriteById )
+
+// Get all favorites by userId
+
+router.get('/myFavorites/:userId', getFavoriteByUserId )
 
 // Create favorite 
 
