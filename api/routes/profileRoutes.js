@@ -8,8 +8,8 @@ import {
   getAllProfiles,
   getProfileById,
   createProfile,
-  updateProfileByID,
-  deleteProfileByID
+  updateProfileById,
+  deleteProfileById
 } from '../controllers/profileController.js'
 
 // Routes
@@ -28,10 +28,10 @@ router.post('/', createProfile)
 
 // Update profile
 
-router.put('/:id', updateProfileByID)
+router.put('/:id', updateProfileById)
 
 // Delete profile
 
-router.delete('/:id', deleteProfileByID)
+router.delete('/:id', deleteProfileById)
 
 export default router

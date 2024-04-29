@@ -3,7 +3,7 @@ import express from "express";
 
 const router = express.Router();
 
-import { getAllMessages, getMessageById, createMessage, updateMessage, deleteMessage } from "../controllers/messageController.js"
+import { getAllMessages, getMessageById, createMessage, updateMessageById, deleteMessageById } from "../controllers/messageController.js"
 // Routes
 
 // Get all messages
@@ -20,11 +20,11 @@ router.post('/', createMessage)
 
 // Update message
 
-router.put('/:id', updateMessage )
+router.put('/:id', updateMessageById )
 
 // Delete message
 
-router.delete('/:id', deleteMessage)
+router.delete('/:id', deleteMessageById)
 
 
 

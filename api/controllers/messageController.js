@@ -1,7 +1,7 @@
 import Message from "../models/messageModel"
 
 // Get all messages
-export const getAllMessage = async (req, res) => {
+export const getAllMessages = async (req, res) => {
   try {
     const messages = await Message.find({});
     if (!messages.length) {
@@ -62,7 +62,7 @@ export const createMessage = async (req, res) => {
 }
 
 // Update a message by ID
-export const updateMessageByID = async (req, res) => {
+export const updateMessageById = async (req, res) => {
   try {
     const { id } = req.params;
     const messageData = req.body;
@@ -90,7 +90,7 @@ export const updateMessageByID = async (req, res) => {
 }
 
 // Delete a message by ID
-export const messageDeleteByID = async (req, res) => {
+export const deleteMessageById = async (req, res) => {
   try {
     const { id } = req.params;
     const messageToDelete = await Message.findByIdAndDelete(id);

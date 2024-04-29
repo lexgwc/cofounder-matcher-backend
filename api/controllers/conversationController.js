@@ -28,6 +28,7 @@ export const getConversationById = async (req, res) => {
     const { id } = req.params
 
     const conversation = await Conversation.findById(id)
+    .populate('messages')
 
     if (!conversation) {
       return res.status(404).json({
@@ -77,7 +78,7 @@ export const createConversation = async (req, res) => {
 
 // Update a Conversation by ID
 
-export const updateConversationByID = async (req, res) => {
+export const updateConversationById = async (req, res) => {
   try {
     const { id } = req.params
     const conversationData = req.body
@@ -109,7 +110,7 @@ export const updateConversationByID = async (req, res) => {
 
 // Delete Conversation by ID
 
-export const deleteConversationByID = async (req, res) => {
+export const deleteConversationById = async (req, res) => {
   try {
     const { id } = req.params
 

@@ -3,7 +3,7 @@ import express from "express";
 
 const router = express.Router();
 
-import { getAllConversations, getConversationById, createConversation, updateConversation, deleteConversation } from "../controllers/conversationController.js"
+import { getAllConversations, getConversationById, createConversation, updateConversationById, deleteConversationById } from "../controllers/conversationController.js"
 // Routes
 
 // Get all conversations
@@ -20,11 +20,11 @@ router.post('/', createConversation)
 
 // Update conversation
 
-router.put('/:id',  updateConversation )
+router.put('/:id',  updateConversationById)
 
 // Delete conversation
 
-router.delete('/:id', deleteConversation)
+router.delete('/:id', deleteConversationById)
 
 
 
