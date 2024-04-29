@@ -6,9 +6,8 @@ export const getAllSchools = async (req, res) => {
   try {
     const schools = await School.find({})
 
-    if (!schools
-    ) {
-      res.status(400).json({
+    if (!schools) {
+      return res.status(400).json({
         error: `No schools found`
       })
     }
@@ -32,12 +31,12 @@ export const getSchoolById = async (req, res) => {
     const school = await School.findById(id)
 
     if (!school) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `School not found`
       })
     }
 
-    res.json(School)
+    res.json(school)
 
   } catch (error) {
     res.status(500).json({
@@ -53,7 +52,7 @@ export const createSchool = async (req, res) => {
     const schoolData = req.body
 
     if (!schoolData.length === 0) {
-      res.status(401).json({
+      return res.status(401).json({
         error: `No School data found`
       })
     }
@@ -61,7 +60,7 @@ export const createSchool = async (req, res) => {
     const schoolCreated = await School.create(schoolData)
 
     if (!schoolCreated) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `School was not able to be created`
       })
     }
@@ -87,7 +86,7 @@ export const updateSchoolByID = async (req, res) => {
     const schoolToUpdate = await School.findById(id)
 
     if (!schoolToUpdate) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `Could not find a School with ID ${id}`
       })
     }
@@ -118,7 +117,7 @@ export const deleteSchoolByID = async (req, res) => {
     const schoolToDelete = await School.findByIdAndDelete(id)
 
     if (!schoolToDelete) {
-      res.status(400).json({
+      return res.status(400).json({
         error: `School not found and was not deleted`
       })
     }
