@@ -5,39 +5,31 @@ import Conversation from "../models/conversationModel.js"
 export const createConversationFromMessage = async (message) => {
   try {
     const conversationData = {
-      users: [message.sender, message.receiver],
+      users: [message.senderId, message.receiverId],
       messages: [message._id]
     }
 
     const newConversation = await Conversation.create(conversationData)
 
     if (!newConversation) {
-      return res.status(401).json({
-        error: `New conversation was not created`
-      })
+      console.log('A new conversation could not be created')
     }
 
-    res.json(newConversation)
+    console.log(newConversation)
 
   } catch (error) {
-    res.status(500).json({
-      error: `Internal server error: ${error}`
-    })
+    console.log(error)
   }
 }
 
 // Function to update an existing conversation when a message is sent for a subsequent time
 
-export const updateConversationFromMessage = async (message) => {
+export const updateConversationFromMessage = async (message, conversationId) => {
   try {
-    const { id } = req.params
-
-    const conversationToUpdate = await Conversation.findById(id)
+    const conversationToUpdate = await Conversation.findById(conversationId)
 
     if (!conversationToUpdate) {
-      return res.status(404).json({
-        error: `New conversation was found`
-      })
+      console.log('No conversations found to update')
     }
 
     conversationToUpdate.messages.push(message._id)
@@ -45,16 +37,12 @@ export const updateConversationFromMessage = async (message) => {
     const updatedConversation = await conversationToUpdate.save()
 
     if (!updatedConversation) {
-      return res.status(401).json({
-        error: `Conversation failed to update`
-      })
+      console.log('Failed to update the conversation')
     }
 
-    res.json(conversationToUpdate)
+    console.log(updatedConversation)
 
   } catch (error) {
-    res.status(500).json({
-      error: `Internal server error: ${error}`
-    })
+    console.log(error)
   }
 }

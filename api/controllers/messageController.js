@@ -51,6 +51,7 @@ export const createMessageAndCreateConversation = async (req, res) => {
     }
 
     const messageCreated = await Message.create(messageData)
+    console.log(messageCreated)
 
     await createConversationFromMessage(messageCreated)
 
@@ -68,6 +69,7 @@ export const createMessageAndCreateConversation = async (req, res) => {
 // Create a message and update a conversation
 export const createMessageAndUpdateConversation = async (req, res) => {
   try {
+    const { conversationId } = req.params
     const messageData = req.body;
 
     if (Object.keys(messageData).length === 0) {
@@ -78,7 +80,7 @@ export const createMessageAndUpdateConversation = async (req, res) => {
 
     const messageCreated = await Message.create(messageData);
 
-    await updateConversationFromMessage(messageCreated)
+    await updateConversationFromMessage(messageCreated, conversationId)
 
     res.json({
       message: `Message was created successfully ${messageCreated}`
