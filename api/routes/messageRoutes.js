@@ -16,11 +16,11 @@ router.get('/:id', getMessageById)
 
 // Create message and create a new conversation
 
-router.post('/', createMessageAndCreateConversation)
+router.post('/new-conversation/', createMessageAndCreateConversation)
 
 // Create message and update an existing conversation
 
-router.post('/', createMessageAndUpdateConversation)
+router.post('/update-conversation/:conversationId', createMessageAndUpdateConversation)
 
 // Update message
 

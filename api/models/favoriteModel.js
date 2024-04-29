@@ -6,18 +6,14 @@ const ObjectId = mongoose.Types.ObjectId
 
 const favoriteSchema = new Schema({
   userId: {
-    type: {
-      type: ObjectId,
-      ref: 'User',
-      required: true
-    }
+    type: ObjectId,
+    ref: 'User',
+    required: true
   },
   favoritedProfile: {
-    type: {
-      type: ObjectId,
-      ref: 'Profile',
-      required: true
-    }
+    type: ObjectId,
+    ref: 'Profile',
+    required: true
   }
 }, {timestamps: true})
 

@@ -30,11 +30,9 @@ const socialMediaSchema = new Schema({
 
 const profileSchema = new Schema({
   userId: {
-    type: {
-      type: ObjectId,
-      ref: 'user',
-      required: true
-    }
+    type: ObjectId,
+    ref: 'user',
+    required: true
   },
   email: {
     type: String,

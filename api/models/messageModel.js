@@ -6,18 +6,14 @@ const ObjectId = mongoose.Types.ObjectId
 
 const messageSchema = new Schema({
   senderId: {
-    type: {
-      type: ObjectId,
-      ref: 'User',
-      required: true
-    }
+    type: ObjectId,
+    ref: 'User',
+    required: true
   },
   receiverId: {
-    type: {
-      type: ObjectId,
-      ref: 'User',
-      required: true
-    }
+    type: ObjectId,
+    ref: 'User',
+    required: true
   },
   content: {
     type: String
