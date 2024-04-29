@@ -5,19 +5,12 @@ const Schema = mongoose.Schema
 const ObjectId = mongoose.Types.ObjectId
 
 const conversationSchema = new Schema({
-  userOne: {
-    type: {
+  users: {
+    type: [{
       type: ObjectId,
       ref: 'User',
       required: 'true'
-    }
-  },
-  userTwo: {
-    type: {
-      type: ObjectId,
-      ref: 'User',
-      required: 'true'
-    }
+    }]
   },
   messages: {
     type: [{
