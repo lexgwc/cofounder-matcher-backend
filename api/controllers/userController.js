@@ -90,7 +90,7 @@ export const updateUserByID = async (req, res) => {
       })
     }
 
-    Object.entries(userData).map((key, value) => {
+    Object.entries(userData).forEach(([key, value]) => {
       userToUpdate[key] = value
     })
     
