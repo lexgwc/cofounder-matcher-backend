@@ -1,4 +1,5 @@
 import Message from "../models/messageModel"
+import { createConversationFromMessage, updateConversationFromMessage } from "../services/conversationServices";
 
 // Get all messages
 export const getAllMessages = async (req, res) => {
@@ -38,8 +39,34 @@ export const getMessageById = async (req, res) => {
   }
 }
 
-// Create a message
-export const createMessage = async (req, res) => {
+// Create a message and create a new conversation
+export const createMessageAndCreateConversation = async (req, res) => {
+  try {
+    const messageData = req.body;
+
+    if (Object.keys(messageData).length === 0) {
+      return res.status(404).json({
+        error: "No message data found"
+      });
+    }
+
+    const messageCreated = await Message.create(messageData)
+
+    await createConversationFromMessage(messageCreated)
+
+    res.json({
+      message: `Message was created successfully ${messageCreated}`
+    })
+
+  } catch (error) {
+    res.status(500).json({
+      error: `Internal server error: ${error}`
+    });
+  }
+}
+
+// Create a message and update a conversation
+export const createMessageAndUpdateConversation = async (req, res) => {
   try {
     const messageData = req.body;
 
@@ -51,9 +78,12 @@ export const createMessage = async (req, res) => {
 
     const messageCreated = await Message.create(messageData);
 
+    await updateConversationFromMessage(messageCreated)
+
     res.json({
       message: `Message was created successfully ${messageCreated}`
-    });
+    })
+
   } catch (error) {
     res.status(500).json({
       error: `Internal server error: ${error}`
