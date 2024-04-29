@@ -93,6 +93,12 @@ export const updateProfileByID = async (req, res) => {
     }
 
     Object.entries(profileData).forEach(([key, value]) => {
+      if(key === 'location' || key === 'socialMedia') {
+        Object.entries(value).forEach(([subKey, subValue]) => {
+          profileToUpdate[key][subKey] = subValue
+        })
+        return
+      }
       profileToUpdate[key] = value
     })
     
