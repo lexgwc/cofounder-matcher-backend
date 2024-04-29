@@ -22,7 +22,7 @@ import './config/db.js'
 app.use(cors());
 app.use(morgan('combined'))
 app.use(express.json())
- 
+
 
 const app = express();
 
