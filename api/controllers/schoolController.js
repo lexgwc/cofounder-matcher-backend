@@ -2,17 +2,14 @@ import School from '../models/schoolModel.js'
 
 // Get all schools
 
-export const getAllSchools
- = async (req, res) => {
+export const getAllSchools = async (req, res) => {
   try {
-    const schools
-     = await School.find({})
+    const schools = await School.find({})
 
     if (!schools
     ) {
       res.status(400).json({
-        error: `No schools
-         found`
+        error: `No schools found`
       })
     }
 
@@ -95,7 +92,7 @@ export const updateSchoolByID = async (req, res) => {
       })
     }
 
-    Object.entries(schoolData).map((key, value) => {
+    Object.entries(schoolData).forEach(([key, value]) => {
       schoolToUpdate[key] = value
     })
     
