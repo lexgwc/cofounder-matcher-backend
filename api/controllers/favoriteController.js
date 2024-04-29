@@ -1,6 +1,6 @@
 import Favorite from "../models/favoriteModel"
 
-// Get all schools
+// Get all favorites
 
 export const getAllFavorite = async (req, res) => {
   try {
@@ -23,7 +23,7 @@ export const getAllFavorite = async (req, res) => {
   }
 }
 
-// Get one School by ID
+// Get one school by ID
 
 export const getFavoritelById = async (req, res) => {
   try {
@@ -38,6 +38,29 @@ export const getFavoritelById = async (req, res) => {
     }
 
     res.json(favorite)
+
+  } catch (error) {
+    res.status(500).json({
+      error: `Internal server error: ${error}`
+    })
+  }
+}
+
+// Get all favorites by userId
+
+export const getFavoritelByUserId = async (req, res) => {
+  try {
+    const { userId } = req.user
+
+    const favorites = await Favorite.find({ userId: userId})
+
+    if (!favorites) {
+      return res.status(400).json({
+        error: `Favorite snot found`
+      })
+    }
+
+    res.json(favorites)
 
   } catch (error) {
     res.status(500).json({
@@ -77,7 +100,7 @@ export const createFavorite = async (req, res) => {
   }
 }
 
-// Update a Favoriteby ID
+// Update a Favorite by ID
 
 export const updateFavoriteByID = async (req, res) => {
   try {
@@ -109,7 +132,7 @@ export const updateFavoriteByID = async (req, res) => {
   }
 }
 
-// Delete School by ID
+// Delete favorite by ID
 
 export const deleteFavoriteByID = async (req, res) => {
   try {
