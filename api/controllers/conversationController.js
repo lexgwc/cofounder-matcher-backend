@@ -28,6 +28,7 @@ export const getConversationById = async (req, res) => {
     const { id } = req.params
 
     const conversation = await Conversation.findById(id)
+    .populate('messages')
 
     if (!conversation) {
       return res.status(404).json({
