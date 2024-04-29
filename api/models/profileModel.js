@@ -6,7 +6,7 @@ const ObjectId = mongoose.Types.ObjectId
 
 const locationSchema = new Schema({
   country: {
-    type: String,
+    type: String
   },
   state: {
     type: String
