@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import School from './schoolModel.js'
 
 const Schema = mongoose.Schema
 
@@ -110,7 +111,9 @@ const profileSchema = new Schema({
     required: true
   },
   currentSchool: {
-    type: String
+    type: ObjectId,
+    ref: 'School',
+    required: true,
   },
   programType: {
     type: String,
@@ -185,9 +188,36 @@ const profileSchema = new Schema({
   }
 }, {timestamps: true})
 
-profileSchema.pre('save', function () {
-  if (this.isModified('firstName') || this.isModified('lastName')) {
-    this.fullName = `${firstName} ${lastName}`
+profileSchema.post('save', function (doc) {
+  if (doc.isModified('firstName') || doc.isModified('lastName')) {
+    doc.fullName = `${firstName} ${lastName}`
+  }
+})
+
+profileSchema.post('save', async function(doc) {
+  const schoolId = doc.currentSchool
+  const profilesArray = await Profile.find({ currentSchool: schoolId })
+
+  if (profilesArray.length === 0) {
+    console.log('No schools found')
+  }  
+  console.log(schoolId)
+
+  const countOfStudents = profilesArray.length
+
+  const schoolToUpdate = await School.findById(schoolId)
+
+  if (!schoolToUpdate) {
+    console.log('Could not find a school to update')
+  }
+
+  schoolToUpdate.numberOfProfiles = countOfStudents
+
+  const updatedSchool = await schoolToUpdate.save()
+  console.log(updatedSchool)
+
+  if(!updatedSchool) {
+    console.log(`Failed to update school's number of students`)
   }
 })
 
