@@ -1,5 +1,5 @@
 import express from "express";
-import { getProgramType, getHasIdea, getAreasOfResponsibility, getIndustryInterests } from "../controllers/helperController";
+import { getProgramType, getHasIdea, getAreasOfResponsibility, getIndustryInterests } from "../controllers/helperController.js";
 
 const router = express.Router();
 
