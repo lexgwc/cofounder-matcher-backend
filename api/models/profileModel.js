@@ -38,6 +38,18 @@ const profileSchema = new Schema({
     type: String,
     required: true
   },
+  firstName: {
+    type: String,
+    required: true
+  },
+  lastName: {
+    type: String,
+    required: true
+  },
+  fullName: {
+    type: String,
+    required: true
+  },
   lastSeen: {
     type: Date
   },
@@ -172,6 +184,10 @@ const profileSchema = new Schema({
     type: socialMediaSchema
   }
 }, {timestamps: true})
+
+profileSchema.pre('save', function () {
+  this.fullName = `(${firstName} ${lastName}`
+})
 
 const Profile = mongoose.model('Profile', profileSchema)
 
