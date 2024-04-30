@@ -186,7 +186,9 @@ const profileSchema = new Schema({
 }, {timestamps: true})
 
 profileSchema.pre('save', function () {
-  this.fullName = `(${firstName} ${lastName}`
+  if (this.isModified('firstName') || this.isModified('lastName')) {
+    this.fullName = `${firstName} ${lastName}`
+  }
 })
 
 const Profile = mongoose.model('Profile', profileSchema)
