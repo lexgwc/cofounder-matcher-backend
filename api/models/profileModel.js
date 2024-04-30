@@ -104,7 +104,7 @@ const profileSchema = new Schema({
         'Other'
       ]
     }],
-    required: false 
+    required: false
   },
   interestedInBeingACofounder: {
     type: Boolean,
@@ -130,7 +130,7 @@ const profileSchema = new Schema({
       'Public Administration',
       'Other'
     ],
-    required: true 
+    required: true
   },
   birthDate: {
     type: Date
@@ -160,15 +160,17 @@ const profileSchema = new Schema({
     type: [String]
   },
   areasOfResponsibility: {
-    type: [{ type: String, enum: [
-      'Business Strategy',
-      'Product Development',
-      'Marketing and Sales',
-      'Technology and Engineering',
-      'Operations',
-      'Finance and Fundraising',
-      'Legal and Compliance'
-    ]}],
+    type: [{
+      type: String, enum: [
+        'Business Strategy',
+        'Product Development',
+        'Marketing and Sales',
+        'Technology and Engineering',
+        'Operations',
+        'Finance and Fundraising',
+        'Legal and Compliance'
+      ]
+    }],
     required: false
   },
   cofounderDesiredQualities: {
@@ -186,7 +188,7 @@ const profileSchema = new Schema({
   socialMedia: {
     type: socialMediaSchema
   }
-}, {timestamps: true})
+}, { timestamps: true })
 
 profileSchema.post('save', function (doc) {
   if (doc.isModified('firstName') || doc.isModified('lastName')) {
@@ -194,13 +196,13 @@ profileSchema.post('save', function (doc) {
   }
 })
 
-profileSchema.post('save', async function(doc) {
+profileSchema.post('save', async function (doc) {
   const schoolId = doc.currentSchool
   const profilesArray = await Profile.find({ currentSchool: schoolId })
 
   if (profilesArray.length === 0) {
     console.log('No schools found')
-  }  
+  }
   console.log(schoolId)
 
   const countOfStudents = profilesArray.length
@@ -216,7 +218,26 @@ profileSchema.post('save', async function(doc) {
   const updatedSchool = await schoolToUpdate.save()
   console.log(updatedSchool)
 
-  if(!updatedSchool) {
+  if (!updatedSchool) {
+    console.log(`Failed to update school's number of students`)
+  }
+})
+
+profileSchema.post("findOneAndDelete", async function (doc) {
+  const schoolId = doc.currentSchool
+
+  const schoolToUpdate = await School.findById(schoolId)
+
+  if (!schoolToUpdate) {
+    console.log('Could not find a school to update')
+  }
+
+  schoolToUpdate.numberOfProfiles -= 1 
+
+  const updatedSchool = await schoolToUpdate.save()
+  console.log(updatedSchool)
+
+  if (!updatedSchool) {
     console.log(`Failed to update school's number of students`)
   }
 })
