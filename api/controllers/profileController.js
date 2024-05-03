@@ -131,6 +131,33 @@ export const updateProfileByUserId = async (req, res) => {
   }
 }
 
+// Get a Profile by userId
+
+export const getProfileByUserId = async (req, res) => {
+  try {
+    const { userId } = req.params
+
+    const profile = await Profile.findOne({ userId: userId})
+
+    if (!profile) {
+      return res.status(404).json({
+        error: `Could not find a profile with ID ${id}`
+      })
+    }
+
+    res.json(profile)
+
+    res.json({
+      message: `Profile was updated successfully`
+    })
+
+  } catch (error) {
+    return res.status(500).json({
+      error: `Internal server error: ${error}`
+    })
+  }
+}
+
 // Update a Profile by ID
 
 export const updateProfileById = async (req, res) => {
