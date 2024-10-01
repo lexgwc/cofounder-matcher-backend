@@ -58,7 +58,12 @@ app.use('/api/profile-list-vals', helperRouter)
 // Set port for use in server
 const PORT = process.env.PORT || 3001
 
+// Example: Use database connection string and secret from environment
+const databaseUri = process.env.DATABASE_URI;
+const secretKey = process.env.SECRET;
+
 // Start server
 server.listen(PORT, () => {
-  console.log("Server running on port ", PORT)
-})
+  console.log("Server running on port ", PORT);
+  console.log("Connected to database at ", databaseUri);
+});
